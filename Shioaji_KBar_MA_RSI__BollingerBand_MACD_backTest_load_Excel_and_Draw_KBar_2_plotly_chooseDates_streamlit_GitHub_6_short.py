@@ -63,15 +63,15 @@ end_date = datetime.datetime.strptime(end_date,'%Y/%m/%d')
 
 
 ###### (2) 轉化為字典 ######:
-#KBar_dic = df.to_dict()
+KBar_dic = df.to_dict()
 #type(KBar_dic)
 #KBar_dic.keys()  ## dict_keys(['time', 'open', 'low', 'high', 'close', 'volume', 'amount'])
 #KBar_dic['open']
 #type(KBar_dic['open'])  ## dict
 #KBar_dic['open'].values()
 #type(KBar_dic['open'].values())  ## dict_values
-KBar_open_list = list(KBar_dic['open'].values())
-KBar_dic['open']=np.array(KBar_open_list)
+KBar_Open_list = list(KBar_dic['Open'].values())
+KBar_dic['Open']=np.array(KBar_Open_list)
 #type(KBar_dic['open'])  ## numpy.ndarray
 #KBar_dic['open'].shape  ## (1596,)
 #KBar_dic['open'].size   ##  1596
