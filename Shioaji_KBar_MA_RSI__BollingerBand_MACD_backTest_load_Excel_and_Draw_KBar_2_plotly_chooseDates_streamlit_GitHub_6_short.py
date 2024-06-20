@@ -16,7 +16,7 @@ import streamlit.components.v1 as stc
 ###### (1) 開始設定 ######
 html_temp = """
 		<div style="background-color:#3872fb;padding:10px;border-radius:10px">
-		<h1 style="color:white;text-align:center;">金融資料視覺化呈現 (金融看板) </h1>
+		<h1 style="color:white;text-align:center;">金融資料視覺化呈現 (期末作業) </h1>
 		<h2 style="color:white;text-align:center;">Financial Dashboard </h2>
 		</div>
 		"""
@@ -53,11 +53,14 @@ df_original = load_data("tw.pkl")
 
 
 ##### 選擇資料區間
-st.subheader("選擇開始與結束的日期, 區間:2023/06/19 至 2023/12/29")
-start_date = st.text_input('選擇開始日期 (日期格式: 2023/06/19)', '2023/06/19')
-end_date = st.text_input('選擇結束日期 (日期格式: 2023/12/29)', '2023/12/29')
-start_date = dateDate.dateDate.strpDate(start_date,'%Y/%m/%d')
-end_date = datetime.datetime.strptime(end_date,'%Y/%m/%d')
+st.subheader("選擇開始與結束的日期, 區間:2023-06-19 至 2023-12-29")
+start_date = st.text_input('選擇開始日期 (日期格式: 2023-06-19)', '2023-06-19')
+end_date = st.text_input('選擇結束日期 (日期格式: 2023-12-29)', '2023-12-29')
+start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+end_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+
+#start_date = dateDate.dateDate.strpDate(start_date,'%Y-%m-%d')
+#end_date = datetime.datetime.strptime(end_date,'%Y-%m-%d')
 # 使用条件筛选选择时间区间的数据
 df = df_original[(df_original['Date'] >= start_date) & (df_original['Date'] <= end_date)]
 
