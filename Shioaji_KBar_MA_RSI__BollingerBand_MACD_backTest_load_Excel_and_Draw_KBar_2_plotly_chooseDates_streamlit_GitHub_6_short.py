@@ -56,8 +56,8 @@ df_original = load_data("tw.pkl")
 st.subheader("選擇開始與結束的日期, 區間:2023-06-19 至 2023-12-29")
 start_date_str = st.text_input('選擇開始日期 (日期格式: 2023-06-19)', '2023-06-19')
 end_date_str = st.text_input('選擇結束日期 (日期格式: 2023-12-29)', '2023-12-29')
-start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
-end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+start_date = datetime.strptime(start_date_str, '%Y/%m/%d').date()
+end_date = datetime.strptime(end_date_str, '%Y/%m/%d').date()
 
 # 確認日期轉換後的類型
 st.write(f"開始日期: {start_date}, 結束日期: {end_date}")
