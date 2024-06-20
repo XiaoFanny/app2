@@ -56,8 +56,8 @@ df_original = load_data("tw.pkl")
 st.subheader("選擇開始與結束的日期, 區間:2023-06-19 至 2023-12-29")
 start_date_str = st.text_input('選擇開始日期 (日期格式: 2023-06-19)', '2023-06-19')
 end_date_str = st.text_input('選擇結束日期 (日期格式: 2023-12-29)', '2023-12-29')
-start_date = datetime.strptime(start_date_str, '%Y/%m/%d').date()
-end_date = datetime.strptime(end_date_str, '%Y/%m/%d').date()
+start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
 
 # 確認日期轉換後的類型
 st.write(f"開始日期: {start_date}, 結束日期: {end_date}")
@@ -76,8 +76,8 @@ KBar_dic = df.to_dict()
 #type(KBar_dic['open'])  ## dict
 #KBar_dic['open'].values()
 #type(KBar_dic['open'].values())  ## dict_values
-KBar_Open_list = list(KBar_dic['Open'].values())
-KBar_dic['Open']=np.array(KBar_Open_list)
+KBar_open_list = list(KBar_dic['open'].values())
+KBar_dic['open']=np.array(KBar_open_list)
 #type(KBar_dic['open'])  ## numpy.ndarray
 #KBar_dic['open'].shape  ## (1596,)
 #KBar_dic['open'].size   ##  1596
@@ -86,9 +86,9 @@ KBar_dic['product'] = np.repeat('tsmc', KBar_dic['open'].size)
 #KBar_dic['product'].size   ## 1596
 #KBar_dic['product'][0]      ## 'tsmc'
 
-KBar_time_list = list(KBar_dic['time'].values())
+KBar_time_list = list(KBar_dic['Date'].values())
 KBar_time_list = [i.to_pydatetime() for i in KBar_time_list] ## Timestamp to datetime
-KBar_dic['time']=np.array(KBar_time_list)
+KBar_dic['Date']=np.array(KBar_time_list)
 
 # KBar_time_list[0]        ## Timestamp('2022-07-01 09:01:00')
 # type(KBar_time_list[0])  ## pandas._libs.tslibs.timestamps.Timestamp
@@ -109,8 +109,8 @@ KBar_dic['close']=np.array(KBar_close_list)
 KBar_volume_list = list(KBar_dic['volume'].values())
 KBar_dic['volume']=np.array(KBar_volume_list)
 
-KBar_amount_list = list(KBar_dic['amount'].values())
-KBar_dic['amount']=np.array(KBar_amount_list)
+#KBar_amount_list = list(KBar_dic['amount'].values())
+#KBar_dic['amount']=np.array(KBar_amount_list)
 
 
 ######  (3) 改變 KBar 時間長度 (以下)  ########
